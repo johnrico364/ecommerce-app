@@ -1,0 +1,48 @@
+user_tbl:
+    id -- (auto generated in mongoDB)
+    fname
+    lname
+    address
+    picture -- optional
+    email -- naay niy otp nga e send sa gmail for active email validations
+    password
+    isAdmin -- [true, false]
+
+    { timestamp } -- auto generated
+
+product_tbl:
+    id -- (auto generated in mongoDB)
+    name
+    price
+    supplier -- *dropdown type { get options from category_tbl }
+    description
+    stocks -- (pila pa kabook stocks nahabilin)
+    picture -- optional
+    isDeleted -- [true, false]
+
+    { timestamp } -- auto generated
+
+order_tbl:
+    id -- (auto generated in mongoDB)
+    ordered_by -- (id sa user nga ni order sa product)
+    product_id
+    quantity
+    payment -- (price * quantity sa product)
+    isCarted -- [true, false]
+    isConfirmed -- [true, false] -- if ma confirm na is mag nofify or mag send sa gmail sa user nga ang iyang na order is to receive na
+    isDelivered -- [true, false]
+
+    { timestamp } -- auto generated
+
+
+supplier_tbl:
+    id -- (auto generated in mongoDB)
+    name
+    contact
+
+
+
+
+Admin Account:
+    email: admin@gmail.com
+    password: Admin@12345

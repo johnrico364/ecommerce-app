@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary: #0a0a5d;
+  --primary2: #f4bc33;
+  --secondary1: #124e73;
+  --secondary2: #2b4150;
+  --font1: "Source Sans 3", sans-serif;
+  --font2: "MuseoModerno", sans-serif;
+  font-family: "Source Sans 3", sans-serif;
+  /* font-family: 'MuseoModerno', sans-serif; */
+}
+
+/* =========================== Product Card ===========================*/
+.items-card {
+  position: relative;
+  z-index: -1;
+
+  .card-title {
+    font-size: 1.4rem;
+    @apply max-sm:text-base;
+  }
+
+  .card-discription {
+    font-size: 1.1rem;
+    font-family: var(--font1);
+    @apply max-sm:text-sm;
+  }
+
+  .card-price {
+    font-family: var(--font1);
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-top: 0.7rem;
+    font-size: 2rem;
+    @apply max-sm:text-base;
+  }
+}
+
+/* =========================== Order Details ===========================*/
+.order-card {
+  position: relative;
+  z-index: -1;
+
+  line-height: 0.8rem;
+  .card-title {
+    font-size: 1.5rem;
+    font-family: var(--font2);
+  }
+  .card-title {
+    font-size: 1.3rem;
+  }
+  .details {
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .price {
+    font-size: 1.2rem;
+    text-align: end;
+  }
+
+  @apply md:mx-12 mx-0 mb-4;
+}
+
+/* =========================== Product Details ===========================*/
+.product-details {
+  position: relative;
+  z-index: -1;
+
+  font-family: var(--font1);
+  color: var(--secondary1);
+  letter-spacing: 0.3px;
+  .card-body {
+    line-height: 0;
+    @apply p-3;
+  }
+  .card-title {
+    font-family: var(--font2);
+    font-size: 1.6rem;
+  }
+  .details {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 0.5rem;
+  }
+  .price {
+    font-family: var(--font2);
+    font-size: 0.9rem;
+    line-height: 0.5rem;
+  }
+}
+
+/* =========================== Carted Products ===========================*/
+.carted-products{
+  .card-title{
+    @apply lg:text-lg md:text-base text-sm;
+  }
+
+  .card-body{
+    @apply py-4 ps-8;
+  }
+  .details{
+    font-family: var(--font1);
+    font-weight: 600;
+    @apply lg:text-base text-xs;
+  }
+}
+
+/* =========================== Order History Details ===========================*/
+.order-history{
+  font-weight: 500;
+  color: var(--secondary1);
+  .card-title{
+    @apply lg:text-lg text-base;
+  }
+
+  .card-body{
+    @apply ps-3 py-4;
+  }
+  .details{
+    font-family: var(--font1);
+    @apply lg:text-base text-xs;
+  }
+}
