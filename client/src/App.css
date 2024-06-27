@@ -259,6 +259,7 @@
 
 /*============================================================== Navbar ==================================================*/
 .my-navbar {
+  position: relative;
   font-family: var(--font2);
 
   nav {
@@ -465,7 +466,6 @@
 /*============================================================== Admin Dashboard ==================================================*/
 .admin-dashboard-container {
   display: flex;
-  background-color: #f5f5f5f1;
   @apply flex-wrap justify-center;
 
   .dashboard-title {
@@ -483,7 +483,7 @@
     letter-spacing: 1px;
     border-bottom: 3px solid var(--secondary1);
     border-radius: 6px;
-    @apply bg-white h-24 px-5 max-sm:mx-8;
+    @apply h-24 px-5 max-sm:mx-8;
 
     .title {
       font-family: var(--font1);
@@ -500,12 +500,12 @@
 
   .graph {
     height: 50vh;
-    @apply max-sm:h-52 mx-3 bg-white rounded-lg overflow-auto;
+    @apply max-sm:h-52 mx-3 rounded-lg overflow-auto;
   }
 
   .bar-graph {
     height: 61vh;
-    @apply max-sm:h-52 mx-3 bg-white rounded-lg overflow-auto;
+    @apply max-sm:h-52 mx-3 rounded-lg overflow-auto;
   }
 
   .transac-title{
@@ -517,7 +517,7 @@
   }
   .all-transaction-container{
     height: 80vh;
-    @apply bg-white rounded-lg mb-5 overflow-auto;
+    @apply  rounded-lg my-5 overflow-auto;
   }
 }
 
@@ -565,6 +565,28 @@
     width: 4rem;
     border-radius: 10px;
     @apply m-1 max-sm:text-sm max-sm:h-7;
+  }
+
+  .modal{
+    color: var(--secondary1);
+  }
+
+  .prod-input{
+    border: 2px solid var(--secondary1);
+    letter-spacing: 1px;
+    @apply w-full h-10 rounded-lg ps-2 max-sm:text-sm;
+
+    &:focus{
+      outline: 0;
+    }
+  }
+  .form-button{
+    background-color: var(--secondary2);
+    color: white;
+    letter-spacing: 1px;
+    height: 2.5rem;
+    border-radius: 10px;
+    @apply font-semibold max-sm:text-sm w-full;
   }
 }
 

@@ -112,6 +112,8 @@
 
 /* =========================== Order History Details ===========================*/
 .order-history{
+  position: relative;
+  z-index: -1;
   font-weight: 500;
   color: var(--secondary1);
   .card-title{

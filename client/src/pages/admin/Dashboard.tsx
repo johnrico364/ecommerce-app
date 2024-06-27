@@ -47,18 +47,15 @@ export const Dashboard = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap mt-5 justify-center">
+        <div className="all-transaction-container">
           <div className="transac-title w-full">Transactions History</div>
-          <div className="basis-full all-transaction-container">
-            <div className="grid lg:grid-cols-2  gap-3 p-4">
-              <OrderHistoryDetails/>
-              <OrderHistoryDetails/>
-              <OrderHistoryDetails/>
-              <OrderHistoryDetails/>
-            </div>
+          <div className="grid lg:grid-cols-2 gap-3 p-4 ">
+            <OrderHistoryDetails />
+            <OrderHistoryDetails />
+            <OrderHistoryDetails />
+            <OrderHistoryDetails />
           </div>
         </div>
-
       </div>
     </div>
   );
