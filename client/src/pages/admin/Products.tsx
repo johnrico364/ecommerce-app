@@ -53,19 +53,26 @@ export const Products = () => {
 
     try {
       const prod = await addProduct(productData);
-      prod?.response && set_successMess(prod?.message);
+      // prod?.response && set_successMess(prod?.message);
+
+      if (prod?.response) {
+        set_successMess(prod?.message);
+        const timeout = setTimeout(() => navigate("/admin/dashboard"), 3000);
+      }
     } catch (error) {}
   };
 
   const productData = useQuery({
     queryKey: ["product"],
     queryFn: getProductsFn,
-    // refetchInterval: 2000,
+    refetchInterval: 2000,
   });
 
   return (
     <div className="admin-product-container">
       <div className="product-data-container">
+        {productData.isLoading && <div className="text-6xl">Loading...</div>}
+
         {allProducts.map((product: any) => {
           return (
             <div className="flex data-card">
