@@ -580,6 +580,10 @@
       outline: 0;
     }
   }
+  .img-input{
+    border-color: var(--secondary1);
+    @apply file-input file-input-bordered w-full max-w-xs;
+  }
   .form-button{
     background-color: var(--secondary2);
     color: white;
@@ -587,6 +591,13 @@
     height: 2.5rem;
     border-radius: 10px;
     @apply font-semibold max-sm:text-sm w-full;
+  }
+  .form-error{
+    font-family: var(--font1);
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 }
 

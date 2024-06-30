@@ -1,11 +1,20 @@
+const { isFloatLocales } = require("validator");
 const Product = require("../models/productSchema");
 
 const createProduct = async (req, res) => {
-  const product = req.body;
-  const productImage = req.file.filename;
+  const product = JSON.parse(req.body.product);
+  const productImage = req?.file?.filename;
+
+  if (productImage === undefined) {
+    return res.status(400).json({ error: "Product image required" });
+  }
 
   try {
-    const data = await Product.create({ ...product, picture: productImage });
+    const data = await Product.create({
+      ...product,
+      isDeleted: false,
+      picture: productImage,
+    });
     res.status(200).json({ data });
   } catch (error) {
     res.status(400).json({ error: error.message });

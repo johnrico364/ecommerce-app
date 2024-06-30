@@ -80,17 +80,19 @@
   }
   .card-title {
     font-family: var(--font2);
-    font-size: 1.6rem;
+    line-height: 1.3rem !important;
+    @apply md:text-2xl text-lg;
   }
   .details {
     font-weight: 600;
-    font-size: 0.9rem;
-    line-height: 0.5rem;
+    line-height: 1rem !important;
+    @apply md:text-base text-sm;
   }
   .price {
+    font-weight: 700;
     font-family: var(--font2);
-    font-size: 0.9rem;
-    line-height: 0.5rem;
+    line-height: 1rem !important;
+    @apply md:text-lg text-base;
   }
 }
 
