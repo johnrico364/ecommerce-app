@@ -41,8 +41,9 @@ export const About = () => {
           </div>
         </div>
 
+        <div className="text-4xl mt-12 mb-5">Address</div>
         <iframe
-        className="my-12"
+          className="mb-12"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.094345839498!2d123.93349424721734!3d10.334334563540455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999ce42172143%3A0xa942285e21752ab4!2sSay%20Lava%20Logistics%20Corp.!5e0!3m2!1sen!2sph!4v1719234764745!5m2!1sen!2sph"
           width="800"
           height="450"
