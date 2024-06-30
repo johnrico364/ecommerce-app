@@ -1,19 +1,32 @@
-export const ProductCard = () => {
+import React from "react";
+
+interface ProductCardProps {
+  data: {
+    name: string;
+    description: string;
+    price: number;
+    picture: string;
+  };
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({data}) => {
   return (
     <div className="items-card">
-      <div className="card card-compact bg-base-100 shadow-sm shadow-blue-100">
+      <div className="card card-compact bg-base-100 shadow-sm shadow-blue-100 h-72">
         <figure>
           <img
-          className=" h-32"
-            src={require('../images/assets/Logo_v2.png')}
+            className="h-32"
+            src={require(`../images/product/${data?.picture}`)}
             alt="Shoes"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p className="card-discription">If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{data.name}</h2>
+          <p className="card-discription">
+            {data?.description}
+          </p>
           <div className="card-actions justify-end">
-            <div className="card-price"> P 3,100</div>
+            <div className="card-price"> ₱ {data.price}</div>
           </div>
         </div>
       </div>

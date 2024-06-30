@@ -19,25 +19,23 @@
 .items-card {
   position: relative;
   z-index: -1;
+  color: var(--secondary1);
 
   .card-title {
-    font-size: 1.4rem;
-    @apply max-sm:text-base;
+    @apply md:text-xl text-base;
   }
 
   .card-discription {
-    font-size: 1.1rem;
+    font-weight: 500;
     font-family: var(--font1);
-    @apply max-sm:text-sm;
+    @apply md:text-base text-xs;
   }
 
   .card-price {
     font-family: var(--font1);
     letter-spacing: 1px;
-    font-weight: 600;
-    padding-top: 0.7rem;
-    font-size: 2rem;
-    @apply max-sm:text-base;
+    font-weight: 800;
+    @apply md:text-xl text-lg;
   }
 }
 
