@@ -32,6 +32,7 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
+    
     if (user) {
       dispatch(login(user));
     }

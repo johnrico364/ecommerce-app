@@ -38,7 +38,7 @@ const loginUser = async (req, res) => {
     const userData = await User.login(user);
     const token = createToken(userData._id);
 
-    res.status(200).json({ isAdmin: userData.isAdmin ,token });
+    res.status(200).json({ isAdmin: userData.isAdmin, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -57,13 +57,14 @@ const otpSignupUser = async (req, res) => {
 
 const getUserdata = async (req, res) => {
   const token = req.params.token;
+
   try {
     const { _id } = jwt.verify(token, process.env.SECRET);
-    const userData = User.findOne({ _id });
+    const userData = await User.findOne({ _id });
 
     res.status(200).json({ user: userData });
   } catch (error) {
-    res.status(400).json({ err: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -80,7 +81,7 @@ const authUserToken = async (req, res) => {
     const userData = await User.findOne({ _id });
 
     if (_id) {
-      res.status(200).json({ mess: true , isAdmin: userData.isAdmin });
+      res.status(200).json({ mess: true, isAdmin: userData.isAdmin });
     }
   } catch (error) {
     res.status(400).json({ mess: false });
