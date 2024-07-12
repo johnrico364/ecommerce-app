@@ -5,7 +5,7 @@ export const OrderProduct = () => {
   const _id = details?.split("-")[1];
 
   return (
-    <div className="product-details">
+    <div className="order-product-container">
       <div className="basis-8/12 mt-5 border">
         <div className="flex flex-wrap">
           <div className="basis-5/12 p-3">

@@ -373,7 +373,7 @@
 }
 
 /*============================================================== User Order Product ==================================================*/
-.product-details{
+.order-product-container{
   display: flex;
   color: black;
   @apply flex-wrap justify-center;
