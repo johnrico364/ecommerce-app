@@ -1,4 +1,3 @@
-const { isFloatLocales } = require("validator");
 const Product = require("../models/productSchema");
 
 const createProduct = async (req, res) => {

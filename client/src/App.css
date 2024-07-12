@@ -372,6 +372,31 @@
   }
 }
 
+/*============================================================== User Order Product ==================================================*/
+.product-details{
+  display: flex;
+  color: black;
+  @apply flex-wrap justify-center;
+
+  .brake-row{
+    border: 2px solid var(--secondary1);
+    border-radius: 3px;
+  }
+
+  .product-title{
+    font-family: var(--font2);
+    font-size: 1.75rem;
+    line-height: 2.3rem;
+    letter-spacing: 1px;
+    @apply font-semibold mb-2;
+  }
+  .product-price{
+    font-size: 2rem;
+    line-height: 2rem;
+    @apply mt-2 font-semibold;
+  }
+}
+
 /*============================================================== User Cart ==================================================*/
 .cart-container  {
   display: flex;
