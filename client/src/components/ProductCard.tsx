@@ -9,7 +9,8 @@ interface ProductCardProps {
   };
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({data}) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const formatter = new Intl.NumberFormat("en").format;
   return (
     <div className="items-card">
       <div className="card card-compact bg-base-100 shadow-sm shadow-blue-100 h-72">
@@ -22,11 +23,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({data}) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>
-          <p className="card-discription">
-            {data?.description}
-          </p>
+          <p className="card-discription">{data?.description}</p>
           <div className="card-actions justify-end">
-            <div className="card-price"> ₱ {data.price}</div>
+            <div className="card-price"> ₱ {formatter(data.price)}</div>
           </div>
         </div>
       </div>
