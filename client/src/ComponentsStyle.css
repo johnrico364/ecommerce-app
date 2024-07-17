@@ -28,7 +28,15 @@
   .card-discription {
     font-weight: 500;
     font-family: var(--font1);
-    @apply md:text-base text-xs;
+
+    /* hidden the text after 3 lines */
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; 
+
+    @apply md:text-base text-sm;
   }
 
   .card-price {
@@ -95,15 +103,15 @@
 }
 
 /* =========================== Carted Products ===========================*/
-.carted-products{
-  .card-title{
+.carted-products {
+  .card-title {
     @apply lg:text-lg md:text-base text-sm;
   }
 
-  .card-body{
+  .card-body {
     @apply py-4 ps-8;
   }
-  .details{
+  .details {
     font-family: var(--font1);
     font-weight: 600;
     @apply lg:text-base text-xs;
@@ -111,19 +119,19 @@
 }
 
 /* =========================== Order History Details ===========================*/
-.order-history{
+.order-history {
   position: relative;
   z-index: -1;
   font-weight: 500;
   color: var(--secondary1);
-  .card-title{
+  .card-title {
     @apply lg:text-lg text-base;
   }
 
-  .card-body{
+  .card-body {
     @apply ps-3 py-4;
   }
-  .details{
+  .details {
     font-family: var(--font1);
     @apply lg:text-base text-xs;
   }
