@@ -27,8 +27,6 @@ export const Product = () => {
       <div className="search-nav">
         <input className="search-bar" type="text" placeholder="Search" />
       </div>
-
-      {productData.isLoading && <div className="text-6xl">Loading...</div>}
       <div className="flex justify-center mt-3">
         <img
           className="banner"
@@ -36,12 +34,17 @@ export const Product = () => {
           alt="banner"
         />
       </div>
+      {productData.isLoading && <div className="text-6xl">Loading...</div>}
 
       <div className="items-container">
         {allProducts?.map((product: any) => {
           console.log(product);
           return (
-            <div onClick={() => navigate(`/user/product/${product?.name}-${product?._id}`)}>
+            <div
+              onClick={() =>
+                navigate(`/user/product/${product?.name}-${product?._id}`)
+              }
+            >
               <ProductCard data={product} />
             </div>
           );
