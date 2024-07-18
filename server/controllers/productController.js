@@ -22,7 +22,10 @@ const createProduct = async (req, res) => {
 
 const getProduct = async (req, res) => {
   try {
-    const products = await Product.find().sort({ createdAt: -1 });
+    const products = await Product.find({ isDeleted: false }).sort({
+      createdAt: -1,
+    });
+
     res.status(200).json({ products });
   } catch (error) {
     res.status(400).json({ error: error.message });
