@@ -18,19 +18,20 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ data }) => {
   return (
     <div className="product-details mb-3 me-4 overflo-auto">
       <div className="card card-side h-42 bg-base-100">
-        <figure>
+        <div className="basis-3/12">
           <img
-            className="md:w-40 w-20"
             src={require(`../images/product/${data.picture}`)}
             alt="Product"
           />
-        </figure>
-        <div className="card-body ">
-          <h2 className="card-title mb-2">{data.name}</h2>
-          <div className="details">{data.description}</div>
-          <div className="details">Stocks: {data.stocks}</div>
-          <div className="details">Supplier: {data.supplier}</div>
-          <div className="price">Price: ₱ {data.price}</div>
+        </div>
+        <div className="basis-9/12">
+          <div className="card-body ">
+            <h2 className="card-title mb-2">{data.name}</h2>
+            <div className="details">{data.description}</div>
+            <div className="details">Stocks: {data.stocks}</div>
+            <div className="details">Supplier: {data.supplier}</div>
+            <div className="price">Price: ₱ {data.price}</div>
+          </div>
         </div>
       </div>
     </div>
