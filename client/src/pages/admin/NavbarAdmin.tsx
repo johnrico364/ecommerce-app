@@ -31,7 +31,6 @@ export const NavbarAdmin = () => {
     try {
       const user = await axiosInstance.get("/api/user/auth-token");
 
-      console.log(user.data.isAdmin);
       user.data.isAdmin || navigate("/user/product");
     } catch (error: any) {
       error.response.data.mess || navigate("/login");
