@@ -57,7 +57,7 @@ export const Products = () => {
 
       if (prod?.response) {
         set_successMess(prod?.message);
-        const timeout = setTimeout(() => navigate("/admin/dashboard"), 3000);
+        const timeout = setTimeout(() => navigate("/admin/products"), 2000);
       }
     } catch (error) {}
   };
@@ -65,7 +65,7 @@ export const Products = () => {
   const productData = useQuery({
     queryKey: ["product"],
     queryFn: getProductsFn,
-    refetchInterval: 2000,
+    refetchInterval: 3000,
   });
 
   return (
@@ -145,6 +145,7 @@ export const Products = () => {
                     <div className="form-error">{errors.supplier?.message}</div>
                   </div>
                   <div className="basis-6/12 md:me-1 mb-2">
+                    <label>Price</label>
                     <input
                       className="prod-input"
                       type="number"
@@ -155,6 +156,7 @@ export const Products = () => {
                     <div className="form-error">{errors.price?.message}</div>
                   </div>
                   <div className="basis-5/12 mb-2">
+                    <label>Stocks</label>
                     <input
                       className="prod-input"
                       type="number"
