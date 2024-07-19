@@ -5,7 +5,7 @@ export const useAddProduct = () => {
   const [isLoading, set_isLoading] = useState<boolean>(false);
   const [exception, set_exception] = useState<string>("");
 
-  const addProduct = async (newProduct: any) => {
+  const addProductAPI = async (newProduct: any) => {
     set_isLoading(true);
     try {
       const product = await axios.post("/api/product/create", newProduct);
@@ -18,5 +18,5 @@ export const useAddProduct = () => {
     set_isLoading(false);
   };
 
-  return { addProduct, isLoading, exception, set_exception };
+  return { addProductAPI, isLoading, exception, set_exception };
 };
