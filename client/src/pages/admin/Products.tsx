@@ -34,7 +34,7 @@ export const Products = () => {
   const [successMess, set_successMess] = useState<string>("");
   const [allProducts, set_allProducts] = useState<any>([]);
 
-  const { addProduct, isLoading, exception, set_exception } = useAddProduct();
+  const { addProductAPI, isLoading, exception, set_exception } = useAddProduct();
 
   const getProductsFn = async () => {
     try {
@@ -52,7 +52,7 @@ export const Products = () => {
     productData.append("product", JSON.stringify(form));
 
     try {
-      const prod = await addProduct(productData);
+      const prod = await addProductAPI(productData);
       // prod?.response && set_successMess(prod?.message);
 
       if (prod?.response) {
@@ -61,6 +61,14 @@ export const Products = () => {
       }
     } catch (error) {}
   };
+
+  const deleteProductFn = async () => {
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
 
   const productData = useQuery({
     queryKey: ["product"],
