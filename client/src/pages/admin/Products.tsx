@@ -8,6 +8,7 @@ import { useAddProduct } from "../../hooks/useAddProduct";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useDeleteProduct } from "../../hooks/useDeleteProduct";
 
 export const Products = () => {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ export const Products = () => {
   const [successMess, set_successMess] = useState<string>("");
   const [allProducts, set_allProducts] = useState<any>([]);
 
-  const { addProductAPI, isLoading, exception, set_exception } = useAddProduct();
+  const { addProductAPI, exception, set_exception } = useAddProduct();
+  const { deleteProductAPI } = useDeleteProduct();
 
   const getProductsFn = async () => {
     try {
@@ -57,18 +59,23 @@ export const Products = () => {
 
       if (prod?.response) {
         set_successMess(prod?.message);
-        const timeout = setTimeout(() => navigate("/admin/products"), 2000);
+        setTimeout(() => window.location.reload(), 2000);
       }
     } catch (error) {}
   };
 
-  const deleteProductFn = async () => {
+  const deleteProductFn = async (_id: any) => {
     try {
-      
-    } catch (error) {
-      
-    }
-  }
+      if (window.confirm("Delete this product?")) {
+        await deleteProductAPI(_id);
+      }
+    } catch (error) {}
+  };
+
+  const editProductFn = async () => {
+    try {
+    } catch (error) {}
+  };
 
   const productData = useQuery({
     queryKey: ["product"],
@@ -89,7 +96,12 @@ export const Products = () => {
               </div>
               <div className="md:basis-2/12 basis-full">
                 <button className="button">Edit</button>
-                <button className="button">Delete</button>
+                <button
+                  className="button"
+                  onClick={() => deleteProductFn(product?._id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           );

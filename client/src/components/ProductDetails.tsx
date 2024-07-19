@@ -25,8 +25,8 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ data }) => {
           />
         </div>
         <div className="basis-9/12">
-          <div className="card-body ">
-            <h2 className="card-title mb-2">{data.name}</h2>
+          <div className="card-body">
+            <h2 className="card-title">{data.name}</h2>
             <div className="details">{data.description}</div>
             <div className="details">Stocks: {data.stocks}</div>
             <div className="details">Supplier: {data.supplier}</div>

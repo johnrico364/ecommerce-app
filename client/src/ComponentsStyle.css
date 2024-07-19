@@ -93,7 +93,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    @apply md:text-2xl text-lg;
+    @apply md:text-2xl pb-2 text-lg;
   }
   .details {
     font-weight: 600;
