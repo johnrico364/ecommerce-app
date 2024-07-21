@@ -104,7 +104,7 @@
   }
   .details {
     font-weight: 600;
-    line-height: 0.8rem !important;
+    line-height: 1rem !important;
 
     /* hidden the text after 1 lines */
     display: -webkit-box;
