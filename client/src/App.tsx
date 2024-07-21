@@ -27,13 +27,14 @@ import { Products } from "./pages/admin/Products";
 import { Users } from "./pages/admin/Users";
 import { Settings } from "./pages/admin/Settings";
 import { OrderProduct } from "./pages/user/OrderProduct";
+import { ProductEdit } from "./pages/admin/ProductEdit";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
-    
+
     if (user) {
       dispatch(login(user));
     }
@@ -49,16 +50,16 @@ function App() {
 
           <Route path="/user" element={<NavbarUser />}>
             <Route path="product" element={<Product />} />
+            <Route path="product/:details" element={<OrderProduct />} />
             <Route path="cart" element={<Cart />} />
             <Route path="about" element={<About />} />
             <Route path="profile" element={<Profile />} />
-
-            <Route path="product/:details" element={<OrderProduct/>}/>
           </Route>
           <Route path="/admin" element={<NavbarAdmin />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="orders" element={<Orders />} />
             <Route path="products" element={<Products />} />
+            <Route path="products/edit/:details" element={<ProductEdit />} />
             <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />
           </Route>
