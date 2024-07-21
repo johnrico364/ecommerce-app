@@ -53,7 +53,6 @@ export const Login = () => {
     try {
       const user = await axiosInstance.get("api/user/auth-token");
 
-      console.log(user.data);
       if (user.data.mess) {
         navigate(user.data.isAdmin ? "/admin/dashboard" : "/user/product");
       }
