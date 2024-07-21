@@ -58,7 +58,7 @@ export const Products = () => {
 
   const deleteProductFn = async (_id: any) => {
     try {
-      if (window.confirm("Delete this product?")) {
+      if (window.confirm(`id: ${_id}  \nDelete this product?`)) {
         await deleteProductAPI(_id);
       }
     } catch (error) {}
@@ -86,13 +86,20 @@ export const Products = () => {
               </div>
               <div className="md:basis-2/12 basis-full">
                 <div className="flex flex-wrap">
-                  <div className="button">Edit</div>
-                  <div
+                  <button
+                    className="button"
+                    onClick={() =>
+                      navigate(`edit/${product.name}-${product._id}`)
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button
                     className="button"
                     onClick={() => deleteProductFn(product?._id)}
                   >
                     Delete
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
