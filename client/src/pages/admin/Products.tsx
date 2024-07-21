@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useDeleteProduct } from "../../hooks/useDeleteProduct";
+import { getAllProducts } from "../../hooks/useGetAllProducts";
 
 export const Products = () => {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export const Products = () => {
       .min(3, "Name too short"),
     description: yup.string().required("Provide product description"),
     supplier: yup.string().required("Supplier required"),
-    price: yup.number().integer("Whole number only").min(5, "Price too low"),
-    stocks: yup.number().integer("Whole number only").min(2, "Stocks too low"),
+    price: yup.number().integer("Whole number only").min(100, "Price too low"),
+    stocks: yup.number().integer("Whole number only").min(10, "Stocks too low"),
   });
 
   const {
@@ -36,16 +37,8 @@ export const Products = () => {
   const [allProducts, set_allProducts] = useState<any>([]);
 
   const { addProductAPI, exception, set_exception } = useAddProduct();
+  const { getProductsAPI } = getAllProducts();
   const { deleteProductAPI } = useDeleteProduct();
-
-  const getProductsFn = async () => {
-    try {
-      const products = await axios.get("/api/product/getall");
-      set_allProducts(products.data.products);
-
-      return true;
-    } catch (error) {}
-  };
 
   const addProductFn = async (form: any) => {
     const productData = new FormData();
@@ -55,11 +48,10 @@ export const Products = () => {
 
     try {
       const prod = await addProductAPI(productData);
-      // prod?.response && set_successMess(prod?.message);
 
       if (prod?.response) {
         set_successMess(prod?.message);
-        setTimeout(() => window.location.reload(), 2000);
+        window.location.reload();
       }
     } catch (error) {}
   };
@@ -72,15 +64,13 @@ export const Products = () => {
     } catch (error) {}
   };
 
-  const editProductFn = async () => {
-    try {
-    } catch (error) {}
-  };
-
   const productData = useQuery({
     queryKey: ["product"],
-    queryFn: getProductsFn,
-    refetchInterval: 3000,
+    queryFn: async () => {
+      const products = await getProductsAPI();
+      set_allProducts(products);
+      return true;
+    },
   });
 
   return (
@@ -90,18 +80,20 @@ export const Products = () => {
 
         {allProducts.map((product: any) => {
           return (
-            <div className="flex data-card">
+            <div className="data-card">
               <div className="md:basis-10/12 basis-full">
                 <ProductDetails data={product} />
               </div>
               <div className="md:basis-2/12 basis-full">
-                <button className="button">Edit</button>
-                <button
-                  className="button"
-                  onClick={() => deleteProductFn(product?._id)}
-                >
-                  Delete
-                </button>
+                <div className="flex flex-wrap">
+                  <div className="button">Edit</div>
+                  <div
+                    className="button"
+                    onClick={() => deleteProductFn(product?._id)}
+                  >
+                    Delete
+                  </div>
+                </div>
               </div>
             </div>
           );
@@ -110,11 +102,11 @@ export const Products = () => {
 
       <div className="xl:basis-7/12 basis-11/12">
         <div className="flex justify-end mt-3">
-          <label htmlFor="my_modal_7">
+          <label htmlFor="add_modal">
             <FaCirclePlus className="icon" />
           </label>
 
-          <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+          <input type="checkbox" id="add_modal" className="modal-toggle" />
           <div className="modal" role="dialog">
             <div className="modal-box">
               <form onSubmit={handleSubmit(addProductFn)}>
@@ -195,7 +187,7 @@ export const Products = () => {
                 </div>
               </form>
             </div>
-            <label className="modal-backdrop" htmlFor="my_modal_7">
+            <label className="modal-backdrop" htmlFor="add_modal">
               Close
             </label>
           </div>
