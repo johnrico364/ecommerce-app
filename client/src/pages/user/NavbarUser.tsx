@@ -27,8 +27,8 @@ export const NavbarUser = () => {
   const checkAuthUser = async () => {
     try {
       const user = await axiosInstance.get("/api/user/auth-token");
-      
-      console.log(user.data.isAdmin)
+
+      console.log(user.data.isAdmin);
       user.data.isAdmin && navigate("/admin/dashboard");
     } catch (error: any) {
       error.response.data.mess || navigate("/login");
@@ -78,7 +78,12 @@ export const NavbarUser = () => {
                 Profile
               </span>
             </li>
-            <li>
+            <li
+              onClick={() => {
+                localStorage.removeItem("user");
+                navigate("/login");
+              }}
+            >
               <span>
                 <FaArrowRightFromBracket className="me-1" />
                 Logout
