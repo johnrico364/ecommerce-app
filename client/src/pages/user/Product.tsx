@@ -35,7 +35,6 @@ export const Product = () => {
 
       <div className="items-container">
         {allProducts?.map((product: any) => {
-          console.log(product);
           return (
             <div
               onClick={() =>
