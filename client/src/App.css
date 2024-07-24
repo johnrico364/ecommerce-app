@@ -55,6 +55,7 @@
     letter-spacing: 1.5px;
     font-size: 4.9rem;
     margin-top: 2rem;
+    @apply max-sm:text-4xl;
   }
 
   .login-input {

@@ -80,7 +80,7 @@ export const Login = () => {
             />
 
             <div className="title-login">Log in</div>
-            <form className="m-20" onSubmit={handleSubmit(loginFn)}>
+            <form className="sm:m-20 border" onSubmit={handleSubmit(loginFn)}>
               <div className="w-full">
                 <div>
                   <FaEnvelope className="icons" />
