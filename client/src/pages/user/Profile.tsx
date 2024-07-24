@@ -46,13 +46,20 @@ export const Profile = () => {
           <div className="w-1/3">
             <FaUserGear className="ms-auto text-3xl" />
           </div>
-          <img
-            className="p-img"
-            src={userData?.picture ? require(`../../images/user/${userData?.picture}`) : ''}
-            alt="Profile"
-            width={130}
-          />
-          <div className="name">{userData?.fname} {userData?.lname}</div>
+          <div className="p-img">
+            <img
+              src={
+                userData?.picture
+                  ? require(`../../images/user/${userData?.picture}`)
+                  : ""
+              }
+              alt="Profile"
+            />
+          </div>
+
+          <div className="name">
+            {userData?.fname} {userData?.lname}
+          </div>
           <div className="address">
             <FaMapLocation className="inline" /> {userData?.address}
           </div>
