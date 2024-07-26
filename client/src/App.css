@@ -474,6 +474,7 @@
   }
   font-family: var(--font1);
   color: var(--secondary1);
+  
   .flex {
     height: 88.5vh;
     flex-wrap: wrap;
