@@ -72,25 +72,11 @@ export const Profile = () => {
 
         <div className="data-side">
           <div className="xl:w-10/12 lg:px-0 w-full px-2  mx-auto">
-            <div className="dropdown dropdown-hover">
-              <div tabIndex={0} role="button" className="btn m-1">
-                Select
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
-              >
-                <li>
-                  <span>To Approve</span>
-                </li>
-                <li>
-                  <span>To Ship</span>
-                </li>
-                <li>
-                  <span>Purchase History</span>
-                </li>
-              </ul>
-            </div>
+            <select>
+              <option selected>To Approve</option>
+              <option>To Ship</option>
+              <option>Purchase History</option>
+            </select>
 
             <div className="card-container flex">
               <div className="basis-full">
