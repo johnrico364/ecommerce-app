@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useAddProduct } from "../../hooks/useAddProduct";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useDeleteProduct } from "../../hooks/useDeleteProduct";
 import { getAllProducts } from "../../hooks/useGetAllProducts";
@@ -56,9 +55,9 @@ export const Products = () => {
     } catch (error) {}
   };
 
-  const deleteProductFn = async (_id: any) => {
+  const deleteProductFn = async (_id: any, name: string) => {
     try {
-      if (window.confirm(`id: ${_id}  \nDelete this product?`)) {
+      if (window.confirm(`product: ${name}  \nDelete this product?`)) {
         await deleteProductAPI(_id);
       }
     } catch (error) {}
@@ -96,7 +95,7 @@ export const Products = () => {
                   </button>
                   <button
                     className="button"
-                    onClick={() => deleteProductFn(product?._id)}
+                    onClick={() => deleteProductFn(product?._id, product?.name)}
                   >
                     Delete
                   </button>

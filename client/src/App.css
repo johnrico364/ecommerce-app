@@ -474,7 +474,7 @@
   }
   font-family: var(--font1);
   color: var(--secondary1);
-  
+
   .flex {
     height: 88.5vh;
     flex-wrap: wrap;
@@ -668,6 +668,60 @@
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
+  }
+}
+
+/*============================================================== Admin Edit Product ==================================================*/
+.product-edit-container {
+  display: flex;
+  font-family: var(--font1);
+  @apply flex-wrap justify-center mt-5;
+
+  .p-img {
+    height: 40vh;
+    width: 40vh;
+    @apply max-md:w-60 max-md:h-60 overflow-hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .edit-form {
+    .prod-input {
+      border: 2px solid var(--secondary1);
+      letter-spacing: 1px;
+      @apply w-full h-10 rounded-lg ps-2 max-sm:text-sm;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    .errors {
+      color: red;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+  }
+
+  .button {
+    color: white;
+    letter-spacing: 1px;
+    height: 2.5rem;
+    border-radius: 10px;
+    @apply font-semibold max-sm:text-sm sm:w-2/12 w-3/12;
+  }
+  .cancel-btn {
+    background-color: var(--secondary2);
+    @apply mr-2;
+  }
+  .save-btn {
+    background-color: var(--secondary1);
+    @apply ml-2;
   }
 }
 

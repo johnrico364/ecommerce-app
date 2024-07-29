@@ -1,9 +1,12 @@
 import axios from "axios";
 
-export const useEditProducts = () => {
-  const editProductAPI = async () => {
+export const useEditProducts = (_id: any) => {
+  const editProductAPI = async (newData: any) => {
     try {
-        await axios.patch('')
+      const product = await axios.patch(`/api/product/update/${_id}`, newData);
+      return true;
     } catch (error) {}
   };
+
+  return { editProductAPI };
 };
