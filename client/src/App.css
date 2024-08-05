@@ -419,7 +419,7 @@
       height: 2.5rem;
       width: 8.5rem;
       border-radius: 10px;
-      @apply max-sm:text-sm max-sm:w-28;
+      @apply max-sm:text-sm max-sm:w-20;
     }
   }
 
@@ -490,7 +490,7 @@
     @apply xl:basis-3/12 lg:basis-5/12 basis-full flex-col items-center justify-center;
   }
   .data-side {
-    @apply xl:basis-9/12 lg:basis-7/12 basis-full;
+    @apply xl:basis-9/12 lg:basis-7/12 basis-full mt-3;
   }
 
   .p-img {
