@@ -8,7 +8,7 @@ import { useAddProduct } from "../../hooks/useAddProduct";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useDeleteProduct } from "../../hooks/useDeleteProduct";
-import { getAllProducts } from "../../hooks/useGetAllProducts";
+import { useGetAllProducts } from "../../hooks/useGetAllProducts";
 
 export const Products = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export const Products = () => {
   const [allProducts, set_allProducts] = useState<any>([]);
 
   const { addProductAPI, exception, set_exception } = useAddProduct();
-  const { getProductsAPI } = getAllProducts();
+  const { getAllProducts } = useGetAllProducts();
   const { deleteProductAPI } = useDeleteProduct();
 
   const addProductFn = async (form: any) => {
@@ -66,7 +66,7 @@ export const Products = () => {
   const productData = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const products = await getProductsAPI();
+      const products = await getAllProducts();
       set_allProducts(products);
       return true;
     },
