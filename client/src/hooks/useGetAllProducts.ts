@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getAllProducts = () => {
-  const getProductsAPI = async () => {
+export const useGetAllProducts = () => {
+  const getAllProducts = async () => {
     try {
       const products = await axios.get("/api/product/getall");
       return products.data.products;
@@ -10,5 +10,5 @@ export const getAllProducts = () => {
     }
   };
 
-  return { getProductsAPI };
+  return { getAllProducts };
 };

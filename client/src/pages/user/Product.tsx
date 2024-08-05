@@ -3,18 +3,18 @@ import { ProductCard } from "../../components/ProductCard";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllProducts } from "../../hooks/useGetAllProducts";
+import { useGetAllProducts } from "../../hooks/useGetAllProducts";
 
 export const Product = () => {
   const navigate = useNavigate();
   const [allProducts, set_allProducts] = useState<any>([]);
 
-  const { getProductsAPI } = getAllProducts();
+  const { getAllProducts } = useGetAllProducts();
 
   const productData = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const products = await getProductsAPI();
+      const products = await getAllProducts();
       set_allProducts(products);
     },
   });
