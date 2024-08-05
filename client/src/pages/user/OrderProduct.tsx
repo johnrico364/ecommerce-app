@@ -5,11 +5,16 @@ import {
   FaPlus,
   FaTruck,
 } from "react-icons/fa6";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetOneProduct } from "../../hooks/useGetOneProduct";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { useOrderProduct } from "../../hooks/useOrderProduct";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface ProductData {
+  _id: string;
   name: string;
   description: string;
   price: number;
@@ -18,27 +23,56 @@ interface ProductData {
 
 export const OrderProduct = () => {
   const formatter = new Intl.NumberFormat("en").format;
+  const navigate = useNavigate();
   const { details } = useParams();
   const _id = details?.split("-")[1];
+  const userToken = useSelector((state: any) => state.user.value.token);
 
   const { getOneProduct } = useGetOneProduct();
+  const { orderOneProduct } = useOrderProduct();
 
   const [productData, set_productData] = useState<ProductData>();
   const [quantity, set_quantity] = useState<number>(1);
+  const [userId, set_userId] = useState<string>("");
 
   const effectprod = async () => {
-    const data = await getOneProduct(_id);
-    set_productData(data);
+    try {
+      // Get Product Details
+      const prodData = await getOneProduct(_id);
+      set_productData(prodData);
+
+      // Get User ID
+      const userData = await axios.get(`/api/user/user-data/${userToken}`);
+      set_userId(userData?.data?.user?._id);
+
+      return true 
+    } catch (error) {}
   };
-  useEffect(() => {
-    effectprod();
+
+  useQuery({
+    queryKey: ["getData"],
+    queryFn: effectprod,
+    refetchInterval: 2000,
   });
+
+  const handleOrder = async (isCarted: boolean) => {
+    const orderForm = {
+      ordered_by: userId,
+      product_id: productData?._id,
+      quantity: quantity,
+      payment: productData?.price ? productData?.price * quantity : 0,
+      isCarted: isCarted,
+    };
+    const response = await orderOneProduct(orderForm);
+
+    response?.success && navigate(`/user/${response?.data?.response}`);
+  };
 
   return (
     <div className="order-product-container">
       <div className="lg:basis-8/12 basis-11/12 mt-5">
-        <div className="flex flex-wrap">
-          <div className="lg:basis-5/12 max-sm:w-72 p-3">
+        <div className="flex flex-wrap justify-center">
+          <div className="lg:basis-5/12 basis-11/12 max-sm:w-72 p-3">
             <img
               className="w-96 bg-cover"
               src={
@@ -49,7 +83,7 @@ export const OrderProduct = () => {
               alt="product"
             />
           </div>
-          <div className="lg:basis-7/12 p-5">
+          <div className="lg:basis-7/12 basis-11/12 p-5">
             <div className="product-title"> {productData?.name} </div>
             <div className="brake-row"></div>
             <div className="product-price">
@@ -71,8 +105,18 @@ export const OrderProduct = () => {
               </button>
             </div>
             <div className="order-actions mt-3">
-              <button className="button mr-2">Add To Cart</button>
-              <button className="button ml-2">Order</button>
+              <button
+                className="button sm:mr-2 mr-0"
+                onClick={() => handleOrder(true)}
+              >
+                Cart
+              </button>
+              <button
+                className="button ml-2"
+                onClick={() => handleOrder(false)}
+              >
+                Order
+              </button>
             </div>
             <div className="flex mt-5">
               <div className="badges">
