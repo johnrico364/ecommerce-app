@@ -72,7 +72,7 @@ export const Profile = () => {
 
         <div className="data-side">
           <div className="xl:w-10/12 lg:px-0 w-full px-2  mx-auto">
-            <select>
+            <select className="border-2 rounded-md">
               <option selected>To Approve</option>
               <option>To Ship</option>
               <option>Purchase History</option>
