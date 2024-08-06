@@ -11,8 +11,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useOtp } from "../hooks/useOtp";
-import { useSignup } from "../hooks/useSignup";
+import { useOtp } from "../hooks/user/useOtp";
+import { useSignup } from "../hooks/user/useSignup";
 
 export const Signup = () => {
   const schema = yup.object().shape({
@@ -63,7 +63,7 @@ export const Signup = () => {
     try {
       const response = await signupUser(userData);
 
-      response && navigate('/user/product');
+      response && navigate("/user/product");
     } catch (error) {}
   };
 

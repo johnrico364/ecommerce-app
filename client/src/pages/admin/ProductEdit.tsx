@@ -1,10 +1,10 @@
 import * as yup from "yup";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetOneProduct } from "../../hooks/useGetOneProduct";
+import { useGetOneProduct } from "../../hooks/product/useGetOneProduct";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEditProducts } from "../../hooks/useEditProduct";
+import { useEditProducts } from "../../hooks/product/useEditProduct";
 
 interface ProductData {
   _id: string;

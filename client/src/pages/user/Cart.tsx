@@ -1,6 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
 import { CartedProducts } from "../../components/CartedProducts";
+import { useGetAllCarts } from "../../hooks/order/useGetAllCarts";
 
 export const Cart = () => {
+  const { getAllCarts } = useGetAllCarts();
+
+  useQuery({ queryKey: ["carts"] ,
+    queryFn: async ()=> {
+      // await getAllCarts()
+    }
+  });
   return (
     <div className="cart-container">
       <div className="product-container">

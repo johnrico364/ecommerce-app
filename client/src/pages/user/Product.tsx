@@ -3,7 +3,7 @@ import { ProductCard } from "../../components/ProductCard";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGetAllProducts } from "../../hooks/useGetAllProducts";
+import { useGetAllProducts } from "../../hooks/product/useGetAllProducts";
 
 export const Product = () => {
   const navigate = useNavigate();

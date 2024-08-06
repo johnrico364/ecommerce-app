@@ -6,12 +6,11 @@ import {
   FaTruck,
 } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetOneProduct } from "../../hooks/useGetOneProduct";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { useOrderProduct } from "../../hooks/useOrderProduct";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useGetOneProduct } from "../../hooks/product/useGetOneProduct";
+import { useState } from "react";
+import { useOrderProduct } from "../../hooks/product/useOrderProduct";
+import { useQuery } from "@tanstack/react-query";
+import { useParseToken } from "../../hooks/user/useParseToken";
 
 interface ProductData {
   _id: string;
@@ -26,10 +25,10 @@ export const OrderProduct = () => {
   const navigate = useNavigate();
   const { details } = useParams();
   const _id = details?.split("-")[1];
-  const userToken = useSelector((state: any) => state.user.value.token);
 
   const { getOneProduct } = useGetOneProduct();
   const { orderOneProduct } = useOrderProduct();
+  const { parseToken } = useParseToken();
 
   const [productData, set_productData] = useState<ProductData>();
   const [quantity, set_quantity] = useState<number>(1);
@@ -42,10 +41,10 @@ export const OrderProduct = () => {
       set_productData(prodData);
 
       // Get User ID
-      const userData = await axios.get(`/api/user/user-data/${userToken}`);
-      set_userId(userData?.data?.user?._id);
+      const userData = await parseToken();
+      set_userId(userData?._id);
 
-      return true 
+      return true;
     } catch (error) {}
   };
 

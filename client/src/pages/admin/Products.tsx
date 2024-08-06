@@ -4,11 +4,11 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { useAddProduct } from "../../hooks/useAddProduct";
+import { useAddProduct } from "../../hooks/product/useAddProduct";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useDeleteProduct } from "../../hooks/useDeleteProduct";
-import { useGetAllProducts } from "../../hooks/useGetAllProducts";
+import { useDeleteProduct } from "../../hooks/product/useDeleteProduct";
+import { useGetAllProducts } from "../../hooks/product/useGetAllProducts";
 
 export const Products = () => {
   const navigate = useNavigate();

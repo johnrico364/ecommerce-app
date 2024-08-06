@@ -1,4 +1,5 @@
 const Order = require("../models/orderSchema");
+const { param } = require("../routes/order");
 
 const orderProduct = async (req, res) => {
   const orderForm = await req?.body;
@@ -41,15 +42,12 @@ const orderProduct = async (req, res) => {
   }
 };
 
-const addCart = async (req, res) => {
-  const order = req.body;
-
+const getAllCart = async (req, res) => {
+  console.log(req.params);
+  // const ordered_by = req.params
   try {
-    const data = await Order.create(order);
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+    // const carts = await Order.find();
+  } catch (error) {}
 };
 
 const cancelOrder = async (req, res) => {
@@ -63,4 +61,4 @@ const cancelOrder = async (req, res) => {
   }
 };
 
-module.exports = { orderProduct, cancelOrder };
+module.exports = { orderProduct, getAllCart, cancelOrder };

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../store";
+import { login } from "../../store";
 
 export const useSignup = () => {
   const dispatch = useDispatch();
