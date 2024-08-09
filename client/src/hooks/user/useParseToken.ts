@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 export const useParseToken = () => {
-  const userToken = useSelector((state: any) => state.user.value.token);
+  const userToken = JSON.parse(
+    localStorage.getItem("user") || `{"token":"null"}`
+  );
 
   const parseToken = async () => {
     try {
-      const userData = await axios.get(`/api/user/user-data/${userToken}`);
+      const userData = await axios.get(`/api/user/user-data/${userToken.token}`);
       return userData?.data?.user;
     } catch (error) {
       console.log(error);
