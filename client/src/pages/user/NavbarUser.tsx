@@ -9,7 +9,6 @@ import {
   FaUserLarge,
   FaXmark,
 } from "react-icons/fa6";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
 export const NavbarUser = () => {

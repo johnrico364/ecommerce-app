@@ -8,7 +8,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetOneProduct } from "../../hooks/product/useGetOneProduct";
 import { useState } from "react";
-import { useOrderProduct } from "../../hooks/product/useOrderProduct";
+import { useOrderProduct } from "../../hooks/order/useOrderProduct";
 import { useQuery } from "@tanstack/react-query";
 import { useParseToken } from "../../hooks/user/useParseToken";
 
