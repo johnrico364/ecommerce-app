@@ -57,7 +57,7 @@ export const OrderProduct = () => {
   const handleOrder = async (isCarted: boolean) => {
     const orderForm = {
       ordered_by: userId,
-      product_id: productData?._id,
+      product: productData?._id,
       quantity: quantity,
       payment: productData?.price ? productData?.price * quantity : 0,
       isCarted: isCarted,

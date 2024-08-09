@@ -6,7 +6,7 @@ const orderProduct = async (req, res) => {
   try {
     const orderExist = await Order.findOne({
       ordered_by: orderForm?.ordered_by,
-      product_id: orderForm?.product_id,
+      product: orderForm?.product,
       isCarted: true,
       isConfirmed: false,
       isDelivered: false,
@@ -48,7 +48,7 @@ const getUserCarts = async (req, res) => {
     const carts = await Order.find({
       ordered_by: ordered_by,
       isCarted: true,
-    }).populate("product_id");
+    }).populate("product");
 
     res.status(200).json({ carts: carts });
   } catch (error) {
