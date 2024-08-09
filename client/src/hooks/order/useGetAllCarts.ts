@@ -4,7 +4,7 @@ export const useGetAllCarts = () => {
   const getAllCarts = async (ordered_by: string) => {
     try {
       const carts = await axios.get(`/api/order/cart/${ordered_by}`);
-      console.log(carts);
+      return carts?.data?.carts;
     } catch (error) {
       console.log(error);
     }
