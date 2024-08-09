@@ -1,19 +1,34 @@
+import React from "react";
 
+interface CartProductProps {
+  data: {
+    quantity: number;
+    payment: number;
+    product: {
+      name: string;
+      price: number;
+      picture: string;
+    };
+  };
+}
 
-export const CartedProducts = () => {
+export const CartedProducts: React.FC<CartProductProps> = ({ data }) => {
   return (
     <div className="carted-products">
       <div className="card card-side bg-base-100 h-44">
         <div className="sm:basis-4/12 basis-6/12">
-          <img src={require("../images/user/1719302861288.jpg")} alt="product" />
+          <img
+            src={require(`../images/product/${data?.product?.picture}`)}
+            alt="Product"
+          />
         </div>
         <div className="basis-8/12">
           <div className="card-body">
-            <h2 className="card-title">New movie is released!</h2>
+            <h2 className="card-title">{data?.product?.name}</h2>
             <div className="details">
-              <div>Price: P 304</div>
-              <div>Quantity: x2</div>
-              <div className="text-end mt-4">Total: ₱ 608</div>
+              <div>Price: ₱ {data?.product?.price}</div>
+              <div>Quantity: x{data?.quantity}</div>
+              <div className="text-end mt-4">Total: ₱ {data?.payment}</div>
             </div>
           </div>
         </div>
