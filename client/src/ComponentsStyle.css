@@ -150,7 +150,7 @@
   .details {
     font-family: var(--font1);
     font-weight: 600;
-    @apply lg:text-base text-xs;
+    @apply lg:text-base text-sm;
   }
 }
 
