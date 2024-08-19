@@ -92,7 +92,8 @@
   }
   .card-title {
     font-family: var(--font2);
-    line-height: 1.3rem !important;
+    line-height: 1.2rem !important;
+    font-weight: 600;
 
     /* hidden the text after 2 lines */
     display: -webkit-box;
@@ -100,7 +101,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    @apply md:text-2xl text-lg;
+    @apply md:text-2xl text-base;
   }
   .details {
     font-weight: 600;
@@ -113,7 +114,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 
-    @apply md:text-base text-sm;
+    @apply md:text-base text-sm pl-2;
   }
   .price {
     font-weight: 700;
