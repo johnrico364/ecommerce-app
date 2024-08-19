@@ -26,7 +26,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ data }) => {
           />
         </div>
         <div className="basis-8/12">
-          <div className="card-body gap-1">
+          <div className="card-body max-md:gap-1">
             <h2 className="card-title">{data.name}</h2>
             <div className="details">{data.description}</div>
             <div className="details">Stocks: {data.stocks}</div>
