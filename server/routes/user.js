@@ -1,6 +1,5 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
 const Controllers = require("../controllers/userController");
 
 const router = express.Router();
@@ -10,7 +9,7 @@ const storage = multer.diskStorage({
     callback(null, "../client/src/images/user");
   },
   filename: (req, file, callback) => {
-    callback(null, Date.now() + path.extname(file.originalname));
+    callback(null, Date.now() + '.png');
   },
 });
 
