@@ -82,9 +82,40 @@ const cancelOrder = async (req, res) => {
   }
 };
 
+const getUserOrderByStatus = async (req, res) => {
+  const { ordered_by, status } = await req.body;
+
+  try {
+    let orders;
+
+    switch (status) {
+      case "to-approve":
+        orders = await Order.find({ ordered_by, isConfirmed: false });
+        break;
+      case "to-ship":
+        orders = await Order.find({ ordered_by, isConfirmed: true });
+        break;
+      case "history":
+        orders = await Order.find({
+          ordered_by,
+          isConfirmed: true,
+          isDelivered: true,
+        });
+        break;
+      default:
+        return res.status(400).json({ error: "Invalid Status" });
+    }
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   orderProduct,
   getUserCarts,
   checkoutCartedProducts,
   cancelOrder,
+  getUserOrderByStatus,
 };
