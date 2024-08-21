@@ -60,9 +60,6 @@ const checkoutCartedProducts = async (req, res) => {
   const cart_ids = await req?.body;
 
   cart_ids.map(async (id) => {
-    // console.log(id);
-    // 66c2f8d8f82d3d82d458cdcc, 66c2f8dcf82d3d82d458cdd2
-
     const data = await Order.findByIdAndUpdate(id, { isCarted: false });
   });
 
