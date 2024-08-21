@@ -13,6 +13,7 @@ interface CartProductProps {
 }
 
 export const CartedProducts: React.FC<CartProductProps> = ({ data }) => {
+  const formatter = new Intl.NumberFormat("en").format;
   return (
     <div className="carted-products">
       <div className="card card-side bg-base-100 h-44">
@@ -28,7 +29,7 @@ export const CartedProducts: React.FC<CartProductProps> = ({ data }) => {
             <div className="details">
               <div>Price: ₱ {data?.product?.price}</div>
               <div>Quantity: x{data?.quantity}</div>
-              <div className="text-end mt-4">Total: ₱ {data?.payment}</div>
+              <div className="text-end mt-4">Total: ₱ {formatter(data?.payment)}</div>
             </div>
           </div>
         </div>
