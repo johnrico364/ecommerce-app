@@ -92,6 +92,7 @@ const getUserOrderByStatus = async (req, res) => {
       case "to-approve":
         orders = await Order.find({
           ordered_by,
+          isCarted: false,
           isConfirmed: false,
         }).populate("product");
         break;
@@ -99,6 +100,7 @@ const getUserOrderByStatus = async (req, res) => {
       case "to-ship":
         orders = await Order.find({
           ordered_by,
+          isCarted: false,
           isConfirmed: true,
         }).populate("product");
         break;
@@ -106,6 +108,7 @@ const getUserOrderByStatus = async (req, res) => {
       case "history":
         orders = await Order.find({
           ordered_by,
+          isCarted: false,
           isConfirmed: true,
           isDelivered: true,
         }).populate("product");
