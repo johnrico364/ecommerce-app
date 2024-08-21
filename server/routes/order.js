@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/new-order", Controllers.orderProduct);
 router.get("/cart/:ordered_by", Controllers.getUserCarts);
+router.post("/checkout-cart", Controllers.checkoutCartedProducts);
 router.delete("/cancel-order/:id", Controllers.cancelOrder);
 
 module.exports = router;

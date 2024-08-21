@@ -56,6 +56,24 @@ const getUserCarts = async (req, res) => {
   }
 };
 
+const checkoutCartedProducts = async (req, res) => {
+  const cart_ids = await req?.body;
+
+  cart_ids.map(async (id) => {
+    // console.log(id);
+    // 66c2f8d8f82d3d82d458cdcc, 66c2f8dcf82d3d82d458cdd2
+
+    const data = await Order.findByIdAndUpdate(id, { isCarted: false });
+  });
+
+  res.status(200).json({ response: "Carted orders checkout successfully" });
+
+  try {
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const cancelOrder = async (req, res) => {
   const id = req.params.id;
 
@@ -67,4 +85,9 @@ const cancelOrder = async (req, res) => {
   }
 };
 
-module.exports = { orderProduct, getUserCarts, cancelOrder };
+module.exports = {
+  orderProduct,
+  getUserCarts,
+  checkoutCartedProducts,
+  cancelOrder,
+};
