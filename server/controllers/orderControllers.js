@@ -90,18 +90,27 @@ const getUserOrderByStatus = async (req, res) => {
 
     switch (status) {
       case "to-approve":
-        orders = await Order.find({ ordered_by, isConfirmed: false });
+        orders = await Order.find({
+          ordered_by,
+          isConfirmed: false,
+        }).populate("product");
         break;
+
       case "to-ship":
-        orders = await Order.find({ ordered_by, isConfirmed: true });
+        orders = await Order.find({
+          ordered_by,
+          isConfirmed: true,
+        }).populate("product");
         break;
+
       case "history":
         orders = await Order.find({
           ordered_by,
           isConfirmed: true,
           isDelivered: true,
-        });
+        }).populate("product");
         break;
+
       default:
         return res.status(400).json({ error: "Invalid Status" });
     }
