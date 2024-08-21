@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParseToken } from "../../hooks/user/useParseToken";
 
 interface UserData {
   address: string;
@@ -18,17 +19,20 @@ interface UserData {
 
 export const Profile = () => {
   const navigate = useNavigate();
-  const userToken = useSelector((state: any) => state.user.value.token);
+  const { parseToken } = useParseToken();
+
   const [userData, set_userData] = useState<UserData>();
 
   const getUserData = async () => {
     try {
-      const user = await axios.get(`/api/user/user-data/${userToken}`);
-      set_userData(user.data.user);
+      const user = await parseToken();
+      set_userData(user);
     } catch (error: any) {
-      console.log(error.response.data.error);
+      console.log(error);
     }
   };
+
+  const getUserOrders = async () => {};
 
   useEffect(() => {
     getUserData();
@@ -72,7 +76,10 @@ export const Profile = () => {
 
         <div className="data-side">
           <div className="xl:w-10/12 lg:px-0 w-full px-2  mx-auto">
-            <select className="border-2 rounded-md">
+            <select
+              className="border-2 rounded-md"
+              onChange={(e) => console.log(e.target.value)}
+            >
               <option selected>To Approve</option>
               <option>To Ship</option>
               <option>Purchase History</option>
