@@ -23,7 +23,7 @@ export const Profile = () => {
 
   const [userData, set_userData] = useState<UserData>();
 
-  const getUserData = async () => {
+  const effectProf = async () => {
     try {
       const user = await parseToken();
       set_userData(user);
@@ -32,10 +32,12 @@ export const Profile = () => {
     }
   };
 
-  const getUserOrders = async () => {};
+  const getUserOrders = async (query: string) => {
+    console.log(query);
+  };
 
   useEffect(() => {
-    getUserData();
+    effectProf();
   }, []);
 
   const logoutFn = () => {
@@ -78,7 +80,7 @@ export const Profile = () => {
           <div className="xl:w-10/12 lg:px-0 w-full px-2  mx-auto">
             <select
               className="border-2 rounded-md"
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => getUserOrders(e.target.value)}
             >
               <option selected>To Approve</option>
               <option>To Ship</option>
