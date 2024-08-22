@@ -57,7 +57,9 @@ export const Products = () => {
 
   const deleteProductFn = async (_id: any, name: string) => {
     try {
-      if (window.confirm(`product: ${name}  \nDelete this product?`)) {
+      if (
+        window.confirm(`product: ${name} \nPress "ok" to delete this product.`)
+      ) {
         await deleteProductAPI(_id);
       }
     } catch (error) {}
