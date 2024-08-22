@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParseToken } from "../../hooks/user/useParseToken";
-import { useGetOrderByStatus } from "../../hooks/order/useGetOrderByStatus";
+import { useGetUserOrderByStatus } from "../../hooks/order/useGetUserOrderByStatus";
 
 interface UserData {
   _id: string;
@@ -23,7 +23,7 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const { parseToken } = useParseToken();
-  const { getUserOrder } = useGetOrderByStatus();
+  const { getUserOrder } = useGetUserOrderByStatus();
 
   const [userData, set_userData] = useState<UserData>();
   const [ordersData, set_ordersData] = useState<string[]>([]);
