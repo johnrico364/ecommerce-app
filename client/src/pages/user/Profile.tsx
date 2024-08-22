@@ -9,8 +9,10 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParseToken } from "../../hooks/user/useParseToken";
+import { useGetOrderByStatus } from "../../hooks/order/useGetOrderByStatus";
 
 interface UserData {
+  _id: string;
   address: string;
   fname: string;
   lname: string;
@@ -19,26 +21,30 @@ interface UserData {
 
 export const Profile = () => {
   const navigate = useNavigate();
+
   const { parseToken } = useParseToken();
+  const { getUserOrder } = useGetOrderByStatus();
 
   const [userData, set_userData] = useState<UserData>();
+  const [ordersData, set_ordersData] = useState<string[]>([]);
+  const [queryOrderStatus, set_queryOrderStatus] =
+    useState<string>("to-approve");
 
   const effectProf = async () => {
     try {
       const user = await parseToken();
       set_userData(user);
+
+      const orders = await getUserOrder(user?._id, queryOrderStatus);
+      set_ordersData(orders);
     } catch (error: any) {
       console.log(error);
     }
   };
 
-  const getUserOrders = async (query: string) => {
-    console.log(query);
-  };
-
   useEffect(() => {
     effectProf();
-  }, []);
+  }, [queryOrderStatus]);
 
   const logoutFn = () => {
     localStorage.removeItem("user");
@@ -80,16 +86,22 @@ export const Profile = () => {
           <div className="xl:w-10/12 lg:px-0 w-full px-2  mx-auto">
             <select
               className="border-2 rounded-md"
-              onChange={(e) => getUserOrders(e.target.value)}
+              onChange={(e) => set_queryOrderStatus(e.target.value)}
             >
-              <option selected>To Approve</option>
-              <option>To Ship</option>
-              <option>Purchase History</option>
+              <option value={"to-approve"}>To Approve</option>
+              <option value={"to-ship"}>To Ship</option>
+              <option value={"history"}>Purchase History</option>
             </select>
 
             <div className="card-container flex">
               <div className="basis-full">
-                <OrderDetails />
+                {ordersData?.map((order: any) => {
+                  return (
+                    <div>
+                      <OrderDetails data={order} />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
