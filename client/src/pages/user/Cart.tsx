@@ -9,6 +9,7 @@ import { FaCircleCheck, FaXmark } from "react-icons/fa6";
 
 export const Cart = () => {
   const navigate = useNavigate();
+  const formatter = new Intl.NumberFormat("en").format;
 
   const { getAllCarts } = useGetAllCarts();
   const { parseToken } = useParseToken();
@@ -88,7 +89,9 @@ export const Cart = () => {
       </div>
 
       <div className="payment-container flex items-center">
-        <div className="basis-1/2 color-2nd-1">Payment: ₱ {totalPayment}</div>
+        <div className="basis-1/2 color-2nd-1">
+          Payment: ₱ {formatter(totalPayment)}
+        </div>
         <div className="basis-1/2 text-end lg:pe-5 pe-2">
           <button className="button" onClick={toCheckOutFn}>
             Check Out
