@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const useGetOrderByStatus = () => {
+export const useGetUserOrderByStatus = () => {
   const getUserOrder = async (ordered_by: string, status: string) => {
     try {
       const order = await axios.post(`/api/order/get-by-status`, {
