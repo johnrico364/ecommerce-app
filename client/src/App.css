@@ -29,16 +29,16 @@
 }
 
 /*=================== Color Template =====================*/
-.color-2nd-1{
+.color-2nd-1 {
   color: var(--secondary1);
 }
-.color-2nd-2{
+.color-2nd-2 {
   color: var(--secondary2);
 }
-.bg-2nd-1{
+.bg-2nd-1 {
   background-color: var(--secondary1);
 }
-.bg-2nd-2{
+.bg-2nd-2 {
   background-color: var(--secondary2);
 }
 
@@ -609,14 +609,13 @@
   font-family: var(--font1);
   @apply flex-wrap justify-center;
 
-  .action-btn {
+  .button {
+    display: flex;
     background-color: var(--secondary1);
     color: white;
-    letter-spacing: 0.5px;
-    height: 3rem;
-    width: 5rem;
     border-radius: 10px;
-    @apply mx-1;
+    @apply h-10 w-16 m-1 items-center justify-center;
+    @apply max-sm:text-sm max-sm:h-7;
   }
 }
 
