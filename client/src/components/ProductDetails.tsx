@@ -17,7 +17,7 @@ interface ProductDetailsProps {
 export const ProductDetails: React.FC<ProductDetailsProps> = ({ data }) => {
   const formatter = new Intl.NumberFormat("en").format;
   return (
-    <div className="product-details mb-3 me-4 overflo-auto">
+    <div className="product-details mb-3 me-4">
       <div className="card card-side h-42 bg-base-100">
         <div className="basis-4/12">
           <img
