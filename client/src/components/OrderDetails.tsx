@@ -1,4 +1,5 @@
 import React from "react";
+import { formatDistanceToNow } from "date-fns";
 
 interface OrderDetailsProps {
   data: {
@@ -16,6 +17,10 @@ interface OrderDetailsProps {
 
 export const OrderDetails: React.FC<OrderDetailsProps> = ({ data }) => {
   const formatter = new Intl.NumberFormat("en").format;
+  const createdDate = formatDistanceToNow(new Date(data?.createdAt), {
+    addSuffix: true,
+  });
+
   return (
     <div className="order-card">
       <div className="card card-side bg-base-100 h-44">
@@ -34,7 +39,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({ data }) => {
               ₱{data?.product?.price} x {data?.quantity}
             </div>
             <div className="price">Total: ₱ {formatter(data?.payment)}</div>
-            <div className="details text-end">Ordered 2 Days Ago</div>
+            <div className="details text-end">Ordered {createdDate}</div>
           </div>
         </div>
       </div>
