@@ -81,7 +81,7 @@ export const Products = () => {
 
         {allProducts.map((product: any) => {
           return (
-            <div className="data-card">
+            <div className="data-wrapper">
               <div className="md:basis-10/12 basis-full">
                 <ProductDetails data={product} />
               </div>

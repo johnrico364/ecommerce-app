@@ -609,6 +609,13 @@
   font-family: var(--font1);
   @apply flex-wrap justify-center;
 
+  .data-wrapper {
+    display: flex;
+    border-bottom: 1px solid var(--secondary1);
+    
+    @apply flex-wrap p-2 mb-3;
+  }
+
   .button {
     display: flex;
     background-color: var(--secondary1);
@@ -629,9 +636,9 @@
     @apply mt-3 md:px-5 px-2 overflow-auto;
     @apply xl:basis-8/12 basis-11/12;
   }
-  .data-card {
+  .data-wrapper {
     display: flex;
-    border-bottom: 2px solid var(--secondary1);
+    border-bottom: 1px solid var(--secondary1);
 
     @apply flex-wrap p-2 mb-3;
   }
