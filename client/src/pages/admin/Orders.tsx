@@ -1,94 +1,68 @@
 import { FaBell } from "react-icons/fa6";
 import { OrderDetails } from "../../components/OrderDetails";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useGetToShipOrders } from "../../hooks/order/useGetToShipOrders";
+import { useState } from "react";
+import { useUpdateOrderStatus } from "../../hooks/order/useUpdateOrderStatus";
 
 export const Orders = () => {
+  const { getToShipOrders } = useGetToShipOrders();
+  const { updateOrderStatus } = useUpdateOrderStatus();
+
+  const [ordersData, set_ordersData] = useState([]);
+
+  const effectOrder = async () => {
+    const order = await getToShipOrders();
+    set_ordersData(order);
+  };
+  const effectQuery = useQuery({
+    queryKey: ["orders"],
+    queryFn: effectOrder,
+  });
+
+  const approveOrDeclineOrder = async (status: string, order: any) => {
+    try {
+      const res = window.confirm(
+        `Product: ${order.product.name} \n\nPress "ok" to ${status} this product?`
+      );
+
+      if (res) {
+        set_ordersData(
+          ordersData.filter((orderData: any) => orderData !== order)
+        );
+        await updateOrderStatus(status, order);
+      }
+    } catch (error) {}
+  };
+
   return (
     <div className="admin-orders-container">
       <div className="lg:basis-7/12 basis-11/12 pt-6">
-        <div className="flex flex-wrap">
-          <div className="basis-10/12">
-            <OrderDetails />
-          </div>
-          <div className="basis-2/12 text-center">
-            <label htmlFor="my_modal_6" className="btn">
-              <FaBell />
-            </label>
+        {ordersData.map((order: any) => {
+          return (
+            <div className="data-wrapper">
+              <div className="basis-9/12">
+                <OrderDetails data={order} />
+              </div>
 
-            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-            <div className="modal" role="dialog">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">
-                  Order K$Alakndasekb123k4j1h3kjh
-                </h3>
-                <p className="py-4">
-                  <button className="action-btn">Approved</button>
-                  <button className="action-btn">Decline</button>
-                </p>
-                <div className="modal-action">
-                  <label htmlFor="my_modal_6" className="btn">
-                    Cancel
-                  </label>
-                </div>
+              <div className="basis-3/12 text-center">
+                <button
+                  className="button"
+                  onClick={() => approveOrDeclineOrder("approve", order)}
+                >
+                  Approve
+                </button>
+                <button
+                  className="button"
+                  onClick={() => approveOrDeclineOrder("decline", order)}
+                >
+                  Decline
+                </button>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex flex-wrap">
-          <div className="basis-10/12">
-            <OrderDetails />
-          </div>
-          <div className="basis-2/12 text-center">
-            <label htmlFor="my_modal_6" className="btn">
-              <FaBell />
-            </label>
-
-            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-            <div className="modal" role="dialog">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">
-                  Order K$Alakndasekb123k4j1h3kjh
-                </h3>
-                <p className="py-4">
-                  <button className="action-btn">Approved</button>
-                  <button className="action-btn">Decline</button>
-                </p>
-                <div className="modal-action">
-                  <label htmlFor="my_modal_6" className="btn">
-                    Cancel
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-wrap">
-          <div className="basis-10/12">
-            <OrderDetails />
-          </div>
-          <div className="basis-2/12 text-center">
-            <label htmlFor="my_modal_6" className="btn">
-              <FaBell />
-            </label>
-
-            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-            <div className="modal" role="dialog">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">
-                  Order K$Alakndasekb123k4j1h3kjh
-                </h3>
-                <p className="py-4">
-                  <button className="action-btn">Approved</button>
-                  <button className="action-btn">Decline</button>
-                </p>
-                <div className="modal-action">
-                  <label htmlFor="my_modal_6" className="btn">
-                    Cancel
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );
