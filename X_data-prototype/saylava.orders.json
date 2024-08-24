@@ -1,0 +1,190 @@
+[{
+  "_id": {
+    "$oid": "66c2f8bff82d3d82d458cdae"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bce30af6d3b951a44c55",
+  "quantity": 2,
+  "payment": 440,
+  "isCarted": false,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:15.581Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-23T12:35:08.284Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c2f8c4f82d3d82d458cdb6"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bce30af6d3b951a44c55",
+  "quantity": 1,
+  "payment": 220,
+  "isCarted": false,
+  "isConfirmed": true,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:20.385Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-19T07:48:20.385Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c2f8c7f82d3d82d458cdbe"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bce30af6d3b951a44c55",
+  "quantity": 5,
+  "payment": 1100,
+  "isCarted": true,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:23.874Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-19T07:48:29.419Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c2f8d8f82d3d82d458cdcc"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2f78cf82d3d82d458cd84",
+  "quantity": 3,
+  "payment": 2808,
+  "isCarted": true,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:40.950Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T05:13:20.421Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c2f8dcf82d3d82d458cdd2"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2cd50f82d3d82d458cd4f",
+  "quantity": 1,
+  "payment": 490,
+  "isCarted": true,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:44.200Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T05:13:20.420Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c2f8def82d3d82d458cdd8"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2f898f82d3d82d458cd93",
+  "quantity": 3,
+  "payment": 420,
+  "isCarted": true,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-19T07:48:46.692Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-19T07:48:50.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c60d3f881af88d88f32099"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bdf50af6d3b951a44c60",
+  "quantity": 2,
+  "payment": 624,
+  "isCarted": false,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-21T15:52:31.752Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T15:52:31.752Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c60e09881af88d88f320cb"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2f898f82d3d82d458cd93",
+  "quantity": 6,
+  "payment": 840,
+  "isCarted": false,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-21T15:55:53.730Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T15:55:53.730Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c60f3c881af88d88f32105"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bdf50af6d3b951a44c60",
+  "quantity": 2,
+  "payment": 624,
+  "isCarted": true,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-21T16:01:00.290Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T16:01:00.290Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c61452881af88d88f321b9"
+  },
+  "ordered_by": "66c21b272ce043fbec4c9917",
+  "product": "66c2bdf50af6d3b951a44c60",
+  "quantity": 8,
+  "payment": 2496,
+  "isCarted": false,
+  "isConfirmed": false,
+  "isDelivered": false,
+  "createdAt": {
+    "$date": "2024-08-21T16:22:42.834Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-21T16:22:42.834Z"
+  },
+  "__v": 0
+}]
