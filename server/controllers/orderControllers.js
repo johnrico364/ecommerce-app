@@ -124,10 +124,45 @@ const getUserOrderByStatus = async (req, res) => {
   }
 };
 
+const getToShipOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({
+      isCarted: false,
+      isConfirmed: false,
+    }).populate("product");
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const updataOrderStatus = async (req, res) => {
+  const { status, order } = req?.body;
+
+  try {
+    let response;
+    switch (status) {
+      case "approve":
+        response = await Order.approve(order);
+        res.status(200).json({ mess: response });
+        break;
+      case "decline":
+        response = await Order.decline(order);
+        res.status(200).json({ mess: response });
+        break;
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   orderProduct,
   getUserCarts,
   checkoutCartedProducts,
   cancelOrder,
   getUserOrderByStatus,
+  getToShipOrders,
+  updataOrderStatus,
 };
