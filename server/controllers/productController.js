@@ -1,4 +1,6 @@
+const path = require("path");
 const Product = require("../models/productSchema");
+const fs = require("fs");
 
 const createProduct = async (req, res) => {
   const product = JSON.parse(req.body.product);
@@ -46,11 +48,18 @@ const getOneProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const id = req.params.id;
-  const newProduct = req.body;
+  const newProduct = JSON.parse(req.body.product);
+  const productImg = req.file?.filename;
+  const oldImg = JSON.parse(req.body.oldPic);
 
   try {
-    const data = await Product.findByIdAndUpdate(id, newProduct);
+    const filePath = path.join("../client/src/images/product", oldImg);
+    productImg && fs.unlink(filePath, (err) => console.log("Error"));
 
+    const data = await Product.findByIdAndUpdate(id, {
+      ...newProduct,
+      picture: productImg,
+    });
     res.status(200).json({ data });
   } catch (error) {
     res.status(400).json({ error: error.message });
