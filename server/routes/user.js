@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     callback(null, "../client/src/images/user");
   },
   filename: (req, file, callback) => {
-    callback(null, Date.now() + '.png');
+    callback(null, Date.now() + ".png");
   },
 });
 
@@ -17,8 +17,9 @@ const upload = multer({ storage });
 
 router.post("/signup", upload.single("image"), Controllers.signupUser);
 router.post("/login", Controllers.loginUser);
-router.post("/signup/otp", Controllers.otpSignupUser);
-router.get("/user-data/:token", Controllers.getUserdata);
-router.get('/auth-token', Controllers.authUserToken);
+router.post("/signup/otp", Controllers.otpSignupUser); //user
+router.get("/user-data/:token", Controllers.getUserdata); //user
+router.get("/auth-token", Controllers.authUserToken); //user
+router.get("/get/all-accounts", Controllers.getAllUserAccounts); //admin
 
 module.exports = router;

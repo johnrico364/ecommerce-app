@@ -88,10 +88,20 @@ const authUserToken = async (req, res) => {
   }
 };
 
+const getAllUserAccounts = async (req, res) => {
+  try {
+    const users = await User.find({ isAdmin: false });
+    res.status(200).json({ users });
+  } catch (error) {
+    res.status(400).json({ mess: error.message });
+  }
+};
+
 module.exports = {
   signupUser,
   loginUser,
   otpSignupUser,
   getUserdata,
   authUserToken,
+  getAllUserAccounts
 };
