@@ -612,7 +612,7 @@
   .data-wrapper {
     display: flex;
     border-bottom: 1px solid var(--secondary1);
-    
+
     @apply flex-wrap p-2 mb-3;
   }
 
@@ -707,6 +707,11 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+
+  .img-input {
+    border-color: var(--secondary1);
+    @apply file-input file-input-bordered w-full max-w-xs;
   }
 
   .edit-form {

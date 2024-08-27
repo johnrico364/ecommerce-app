@@ -48,6 +48,7 @@ export const ProductEdit = () => {
   });
 
   const [productData, set_productData] = useState<ProductData>();
+  const [productImg, set_productImg] = useState<File | null>(null);
 
   const { getOneProduct } = useGetOneProduct();
   const { editProductAPI } = useEditProducts(_id);
@@ -61,8 +62,17 @@ export const ProductEdit = () => {
   });
 
   const saveProductFn = async (form: any) => {
+    const productForm = new FormData();
+
+    productImg && productForm.append("image", productImg);
+    productForm.append("product", JSON.stringify(form));
+    productForm.append(
+      "oldPic",
+      JSON.stringify(productData?.picture)
+    );
+
     try {
-      const response = await editProductAPI(form);
+      const response = await editProductAPI(productForm);
       response && navigate("/admin/products");
     } catch (error) {}
   };
@@ -88,6 +98,18 @@ export const ProductEdit = () => {
             <div className="edit-form">
               <form onSubmit={handleSubmit(saveProductFn)}>
                 <div className="flex flex-wrap gap-3">
+                  <div className="basis-full">
+                    <input
+                      className="img-input"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        set_productImg(
+                          e.target.files ? e.target.files[0] : null
+                        );
+                      }}
+                    />
+                  </div>
                   <div className="basis-full">
                     <input
                       className="prod-input"
