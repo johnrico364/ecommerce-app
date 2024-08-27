@@ -19,8 +19,16 @@ export const Products = () => {
       .min(3, "Name too short"),
     description: yup.string().required("Provide product description"),
     supplier: yup.string().required("Supplier required"),
-    price: yup.number().integer("Whole number only").min(100, "Price too low"),
-    stocks: yup.number().integer("Whole number only").min(10, "Stocks too low"),
+    price: yup
+      .number()
+      .transform((value, origvalue) => (origvalue.trim() === "" ? 1 : value))
+      .integer("Whole number only")
+      .min(100, "Price too low"),
+    stocks: yup
+      .number()
+      .transform((value, origvalue) => (origvalue.trim() === "" ? 1 : value))
+      .integer("Whole number only")
+      .min(10, "Stocks too low"),
   });
 
   const {
@@ -71,7 +79,7 @@ export const Products = () => {
       const products = await getAllProducts();
       set_allProducts(products);
       return true;
-    },
+    }
   });
 
   return (
