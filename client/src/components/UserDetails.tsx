@@ -1,19 +1,20 @@
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, formatDate } from "date-fns";
 import React from "react";
 
-interface UserDetailsProps {
+interface UserProps {
   data: {
     fname: string;
     lname: string;
     address: string;
     email: string;
     picture: string;
+    createdAt: string;
     updatedAt: string;
   };
   index: number;
 }
 
-export const UserDetails: React.FC<UserDetailsProps> = ({ data, index }) => {
+export const UserDetailsCard: React.FC<UserProps> = ({ data, index }) => {
   const updateDate = formatDistanceToNow(new Date(data.updatedAt), {
     addSuffix: true,
   });
@@ -43,5 +44,28 @@ export const UserDetails: React.FC<UserDetailsProps> = ({ data, index }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+export const UserDetailsTable: React.FC<UserProps> = ({ data, index }) => {
+  const createDate = formatDate(new Date(data.createdAt), "MMM dd, yyyy");
+
+  return (
+    <tr className="hover">
+      <th>{index}</th>
+      <td>
+        <img
+          src={require(`../images/user/${data?.picture}`)}
+          alt="profile"
+          width={50}
+        />
+      </td>
+      <td>
+        {data?.fname} {data?.lname}
+      </td>
+      <td>{data?.email}</td>
+      <td>{data?.address}</td>
+      <td>{createDate}</td>
+    </tr>
   );
 };
