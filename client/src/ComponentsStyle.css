@@ -51,6 +51,10 @@
     font-weight: 800;
     @apply md:text-xl text-lg;
   }
+
+  &:hover {
+    border: 2px solid var(--secondary1);
+  }
 }
 
 /* =========================== Order Details ===========================*/

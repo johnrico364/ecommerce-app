@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   FaArrowRightFromBracket,
   FaBars,
@@ -13,6 +13,7 @@ import axios from "axios";
 
 export const NavbarUser = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [sidebar, set_sidebar] = useState("none");
 
   const user = JSON.parse(localStorage.getItem("user") || `{"token":"null"}`);
@@ -39,6 +40,29 @@ export const NavbarUser = () => {
     checkAuthUser();
   }, []);
 
+  const routes = [
+    {
+      path: "product",
+      name: "Products",
+      icon: <FaBox className="me-1" />
+    },
+    {
+      path: "cart", 
+      name: "Cart",
+      icon: <FaCartShopping className="me-1" />
+    },
+    {
+      path: "about",
+      name: "About",
+      icon: <FaCircleInfo className="me-1" />
+    },
+    {
+      path: "profile",
+      name: "Profile", 
+      icon: <FaUserLarge className="me-1" />
+    }
+  ]
+
   return (
     <div>
       <div className="my-navbar">
@@ -53,30 +77,14 @@ export const NavbarUser = () => {
                 <FaXmark className="icons" />
               </span>
             </li>
-            <li onClick={() => navigate("product")}>
-              <span>
-                <FaBox className="me-1" />
-                Products
-              </span>
-            </li>
-            <li onClick={() => navigate("cart")}>
-              <span>
-                <FaCartShopping className="me-1" />
-                Cart
-              </span>
-            </li>
-            <li onClick={() => navigate("about")}>
-              <span>
-                <FaCircleInfo className="me-1" />
-                About
-              </span>
-            </li>
-            <li onClick={() => navigate("profile")}>
-              <span>
-                <FaUserLarge className="me-1" />
-                Profile
-              </span>
-            </li>
+            {routes.map((route) => (
+              <li key={route.path} onClick={() => navigate(route.path)}>
+                <span className={location.pathname === `/user/${route.path}` ? 'underline' : ''}>
+                  {route.icon}
+                  {route.name}
+                </span>
+              </li>
+            ))}
             <li
               onClick={() => {
                 localStorage.removeItem("user");
@@ -100,33 +108,14 @@ export const NavbarUser = () => {
                 />
               </span>
             </li>
-            <li className="hideOnMobile" onClick={() => navigate("product")}>
-              <span>
-                <FaBox className="me-1" />
-                Products
-              </span>
-            </li>
-            <li className="hideOnMobile" onClick={() => navigate("cart")}>
-              <span>
-                <FaCartShopping className="me-1" />
-                Cart
-              </span>
-            </li>
-            <li className="hideOnMobile" onClick={() => navigate("about")}>
-              <span>
-                <FaCircleInfo className="me-1" />
-                About
-              </span>
-            </li>
-            <li
-              className="hideOnMobile xl:me-8 me-2"
-              onClick={() => navigate("profile")}
-            >
-              <span>
-                <FaUserLarge className="me-1" />
-                Profile
-              </span>
-            </li>
+            {routes.map((route) => (
+              <li key={route.path} className="hideOnMobile" onClick={() => navigate(route.path)}>
+                <span className={location.pathname === `/user/${route.path}` ? 'underline' : ''}>
+                  {route.icon}
+                  {route.name}
+                </span>
+              </li>
+            ))}
             <li className="menu-button" onClick={() => set_sidebar("flex")}>
               <span>
                 <FaBars className="icons" />

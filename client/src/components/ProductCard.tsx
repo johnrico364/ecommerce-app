@@ -12,8 +12,8 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const formatter = new Intl.NumberFormat("en").format;
   return (
-    <div className="items-card">
-      <div className="card card-compact bg-base-100 shadow-sm shadow-blue-100 h-72">
+    <div className="items-card cursor-pointer">
+      <div className="card card-compact bg-base-100 shadow-sm shadow-blue-200 h-72">
         <figure>
           <img
             className="h-32"
